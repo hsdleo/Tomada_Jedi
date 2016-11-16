@@ -28,6 +28,11 @@
             android:label="Tomada Jedi"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".ListaBTActivity"
+            android:label="Tomada Jedi"
+             >
+        </activity>
 
     </application>
 

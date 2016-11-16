@@ -2,6 +2,8 @@ package com.example.leonardo.tomex;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -12,13 +14,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -45,7 +44,8 @@ public class Principal extends AppCompatActivity implements SensorEventListener{
     private StringBuilder recDataString = new StringBuilder();
     private BluetoothConnection bluetoothConnection;
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    private static final String address = "98:D3:31:F6:1A:38";
+    //private static final String address = "98:D3:31:F6:1A:38";
+    private static String address = "98:D3:31:30:38:9B";
 
     private SensorManager senSensorManager;
     private Sensor acelerometro;
@@ -69,9 +69,19 @@ public class Principal extends AppCompatActivity implements SensorEventListener{
         audio_shake2 = MediaPlayer.create(this,R.raw.audio_shake2);
         audio_shake3 = MediaPlayer.create(this,R.raw.audio_shake3);
         audio_shake4 = MediaPlayer.create(this,R.raw.audio_shake4);
-       setProgressBarIndeterminateVisibility(true);
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.getStringExtra("MAC") != null) {
+                address = intent.getStringExtra("MAC");
+                Log.d("MAC",address);
+            }
+        }
+        setProgressBarIndeterminateVisibility(true);
         progressDialog = ProgressDialog.show(Principal.this,
                 "Conectando", "Aguarde!");
+
+
+
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {

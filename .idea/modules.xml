@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Tomex.iml" filepath="$PROJECT_DIR$/Tomex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tomada_Jedi.iml" filepath="$PROJECT_DIR$/Tomada_Jedi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
